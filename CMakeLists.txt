@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 2.8)
+PROJECT(TouchControl)
+
+SET(SOURCE_ROOT ".")
+SET(SOURCE_INCLUDE ".")
+SET(SOURCE_LIB ".")
+
+SET(CMAKE_C_COMPILER arm-arago-linux-gnueabi-g++)
+SET(CMAKE_CXX_COMPILER arm-arago-linux-gnueabi-g++)
+
+set(CMAKE_CXX_FLAGS "-fpermissive")
+
+AUX_SOURCE_DIRECTORY(${SOURCE_ROOT} SOURCES)
+INCLUDE_DIRECTORIES(
+	${SOURCE_ROOT}
+	${SOURCE_INCLUDE}
+)
+LINK_DIRECTORIES(
+	${SOURCE_LIB}
+)
+ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} pthread)
